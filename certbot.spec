@@ -4,7 +4,7 @@
 #
 Name     : certbot
 Version  : 0.10.2
-Release  : 1
+Release  : 2
 URL      : https://github.com/certbot/certbot/archive/v0.10.2.tar.gz
 Source0  : https://github.com/certbot/certbot/archive/v0.10.2.tar.gz
 Summary  : No detailed summary available
@@ -30,8 +30,10 @@ BuildRequires : pyOpenSSL
 BuildRequires : pyasn1-python
 BuildRequires : pycparser
 BuildRequires : pycparser-python
+BuildRequires : pyparsing
 BuildRequires : pyrfc3339-python
 BuildRequires : pytest
+BuildRequires : python-augeas
 BuildRequires : python-dev
 BuildRequires : python-mock-python
 BuildRequires : python3-dev
@@ -75,7 +77,7 @@ python components for the certbot package.
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1485899303
+export SOURCE_DATE_EPOCH=1485900170
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -85,10 +87,21 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 PYTHONPATH=%{buildroot}/usr/lib/python2.7/site-packages python2 setup.py test
 %install
-export SOURCE_DATE_EPOCH=1485899303
+export SOURCE_DATE_EPOCH=1485900170
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
+## make_install_append content
+for DIR in certbot-apache certbot-nginx certbot-nginx; do
+(
+cd ${DIR}
+python2 setup.py build -b py2
+python3 setup.py build -b py3
+python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
+python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
+)
+done
+## make_install_append end
 
 %files
 %defattr(-,root,root,-)

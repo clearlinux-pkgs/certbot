@@ -21,3 +21,5 @@ pyasn1-python
 pycparser-python
 pycparser
 ndg_httpsclient-python
+pyparsing
+python-augeas
