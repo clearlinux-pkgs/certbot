@@ -1,0 +1,23 @@
+# This file contains additional build requirements that did not get
+# picked up automatically. One name per line, no whitespace.
+python-mock-python
+zope.component-python
+six-python
+six
+pytz-python
+pyrfc3339-python
+pyOpenSSL
+parsedatetime-python
+configobj-python
+ConfigArgParse-python
+acme-python
+zope.event-python
+acme
+future-python
+cffi-python
+cffi
+enum34-python
+pyasn1-python
+pycparser-python
+pycparser
+ndg_httpsclient-python
