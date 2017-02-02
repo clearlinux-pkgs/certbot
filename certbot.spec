@@ -4,7 +4,7 @@
 #
 Name     : certbot
 Version  : 0.10.2
-Release  : 2
+Release  : 3
 URL      : https://github.com/certbot/certbot/archive/v0.10.2.tar.gz
 Source0  : https://github.com/certbot/certbot/archive/v0.10.2.tar.gz
 Summary  : No detailed summary available
@@ -19,7 +19,6 @@ BuildRequires : cffi
 BuildRequires : cffi-python
 BuildRequires : configobj-python
 BuildRequires : enum34-python
-BuildRequires : future-python
 BuildRequires : ndg_httpsclient-python
 BuildRequires : parsedatetime-python
 BuildRequires : pbr
@@ -35,6 +34,7 @@ BuildRequires : pyrfc3339-python
 BuildRequires : pytest
 BuildRequires : python-augeas
 BuildRequires : python-dev
+BuildRequires : python-future
 BuildRequires : python-mock-python
 BuildRequires : python3-dev
 BuildRequires : pytz-python
@@ -77,7 +77,7 @@ python components for the certbot package.
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1485900170
+export SOURCE_DATE_EPOCH=1486008710
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -87,7 +87,7 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 PYTHONPATH=%{buildroot}/usr/lib/python2.7/site-packages python2 setup.py test
 %install
-export SOURCE_DATE_EPOCH=1485900170
+export SOURCE_DATE_EPOCH=1486008710
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
