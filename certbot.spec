@@ -4,7 +4,7 @@
 #
 Name     : certbot
 Version  : 0.14.2
-Release  : 6
+Release  : 8
 URL      : https://github.com/certbot/certbot/archive/v0.14.2.tar.gz
 Source0  : https://github.com/certbot/certbot/archive/v0.14.2.tar.gz
 Summary  : No detailed summary available
@@ -80,7 +80,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1496175499
+export SOURCE_DATE_EPOCH=1496951875
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -90,7 +90,7 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 PYTHONPATH=%{buildroot}/usr/lib/python2.7/site-packages python2 setup.py test || :
 %install
-export SOURCE_DATE_EPOCH=1496175499
+export SOURCE_DATE_EPOCH=1496951875
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
