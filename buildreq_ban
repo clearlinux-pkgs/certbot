@@ -2,3 +2,7 @@
 # undesirable. One entry per line, no whitespace.
 certbot
 certbot-apache
+PyOpenSSL
+cloudflare
+dns-lexicon
+python-digitalocean
