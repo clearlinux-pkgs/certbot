@@ -13,7 +13,7 @@ ConfigArgParse-python
 acme-python
 zope.event-python
 acme
-python-future
+python-future-python3
 cffi-python
 cffi
 enum34-python

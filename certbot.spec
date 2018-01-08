@@ -4,7 +4,7 @@
 #
 Name     : certbot
 Version  : 0.20.0
-Release  : 15
+Release  : 16
 URL      : https://github.com/certbot/certbot/archive/v0.20.0.tar.gz
 Source0  : https://github.com/certbot/certbot/archive/v0.20.0.tar.gz
 Summary  : No detailed summary available
@@ -63,7 +63,7 @@ BuildRequires : pyrfc3339
 BuildRequires : pyrfc3339-python
 BuildRequires : python-augeas
 BuildRequires : python-dev
-BuildRequires : python-future
+BuildRequires : python-future-python3
 BuildRequires : python-mock
 BuildRequires : python-mock-python
 BuildRequires : python3-dev
@@ -131,7 +131,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1513013259
+export SOURCE_DATE_EPOCH=1515437579
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -141,7 +141,7 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 PYTHONPATH=%{buildroot}/usr/lib/python2.7/site-packages python2 setup.py test || :
 %install
-export SOURCE_DATE_EPOCH=1513013259
+export SOURCE_DATE_EPOCH=1515437579
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
