@@ -1,9 +1,7 @@
 for DIR in certbot-apache certbot-nginx certbot-nginx; do
 (
 	cd ${DIR}
-	python2 setup.py build -b py2
 	python3 setup.py build -b py3
-	python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 	python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
 )
 done

@@ -4,14 +4,13 @@
 #
 Name     : certbot
 Version  : 0.23.0
-Release  : 21
+Release  : 22
 URL      : https://github.com/certbot/certbot/archive/v0.23.0.tar.gz
 Source0  : https://github.com/certbot/certbot/archive/v0.23.0.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Apache-2.0
 Requires: certbot-bin
-Requires: certbot-legacypython
 Requires: certbot-python3
 Requires: certbot-python
 Requires: ConfigArgParse
@@ -25,7 +24,6 @@ Requires: httplib2
 Requires: josepy
 Requires: oauth2client
 Requires: parsedatetime
-Requires: pyOpenSSL
 Requires: pyparsing
 Requires: pyrfc3339
 Requires: python-augeas
@@ -58,6 +56,8 @@ BuildRequires : parsedatetime
 BuildRequires : parsedatetime-python
 BuildRequires : pbr
 BuildRequires : pip
+BuildRequires : pluggy
+BuildRequires : py-python
 BuildRequires : pyOpenSSL
 BuildRequires : pyasn1-python
 BuildRequires : pycparser
@@ -65,6 +65,7 @@ BuildRequires : pycparser-python
 BuildRequires : pyparsing
 BuildRequires : pyrfc3339
 BuildRequires : pyrfc3339-python
+BuildRequires : pytest
 BuildRequires : python-augeas
 BuildRequires : python-dev
 BuildRequires : python-future-python3
@@ -77,11 +78,12 @@ BuildRequires : requests
 BuildRequires : setuptools
 BuildRequires : six
 BuildRequires : six-python
+BuildRequires : tox
+BuildRequires : virtualenv
 BuildRequires : zope.component
 BuildRequires : zope.component-python
 BuildRequires : zope.event-python
 BuildRequires : zope.interface
-BuildRequires : zope.interface-python
 
 %description
 This directory contains your keys and certificates.
@@ -97,15 +99,6 @@ Group: Binaries
 
 %description bin
 bin components for the certbot package.
-
-
-%package legacypython
-Summary: legacypython components for the certbot package.
-Group: Default
-Requires: python-core
-
-%description legacypython
-legacypython components for the certbot package.
 
 
 %package python
@@ -134,20 +127,17 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1523208108
-python2 setup.py build -b py2
+export SOURCE_DATE_EPOCH=1523649511
 python3 setup.py build -b py3
 
 %check
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python2.7/site-packages python2 setup.py test || :
+PYTHONPATH=%{buildroot}/usr/lib/python3.6/site-packages python3 setup.py test
 %install
-export SOURCE_DATE_EPOCH=1523208108
 rm -rf %{buildroot}
-python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
-python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
+python3 -tt setup.py build -b py3 install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
@@ -155,9 +145,7 @@ echo ----[ mark ]----
 for DIR in certbot-apache certbot-nginx certbot-nginx; do
 (
 cd ${DIR}
-python2 setup.py build -b py2
 python3 setup.py build -b py3
-python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
 )
 done
@@ -169,10 +157,6 @@ done
 %files bin
 %defattr(-,root,root,-)
 /usr/bin/certbot
-
-%files legacypython
-%defattr(-,root,root,-)
-/usr/lib/python2*/*
 
 %files python
 %defattr(-,root,root,-)
