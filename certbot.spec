@@ -4,7 +4,7 @@
 #
 Name     : certbot
 Version  : 0.24.0
-Release  : 25
+Release  : 26
 URL      : https://github.com/certbot/certbot/archive/v0.24.0.tar.gz
 Source0  : https://github.com/certbot/certbot/archive/v0.24.0.tar.gz
 Summary  : No detailed summary available
@@ -24,14 +24,13 @@ Requires: httplib2
 Requires: josepy
 Requires: oauth2client
 Requires: parsedatetime
+Requires: pyOpenSSL
 Requires: pyparsing
 Requires: pyrfc3339
 Requires: python-augeas
 Requires: python-future-python3
-Requires: python-mock
 Requires: pytz
 Requires: requests
-Requires: setuptools
 Requires: six
 Requires: zope.component
 Requires: zope.interface
@@ -127,7 +126,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1526429486
+export SOURCE_DATE_EPOCH=1528563307
 python3 setup.py build -b py3
 
 %check
