@@ -66,7 +66,7 @@ BuildRequires : pyrfc3339
 BuildRequires : pyrfc3339-python
 BuildRequires : pytest
 BuildRequires : python-augeas
-BuildRequires : python-dev
+
 BuildRequires : python-future-python3
 BuildRequires : python-mock
 BuildRequires : python-mock-python
