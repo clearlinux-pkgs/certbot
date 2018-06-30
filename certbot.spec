@@ -4,7 +4,7 @@
 #
 Name     : certbot
 Version  : 0.24.0
-Release  : 28
+Release  : 29
 URL      : https://github.com/certbot/certbot/archive/v0.24.0.tar.gz
 Source0  : https://github.com/certbot/certbot/archive/v0.24.0.tar.gz
 Summary  : No detailed summary available
@@ -12,6 +12,7 @@ Group    : Development/Tools
 License  : Apache-2.0
 Requires: certbot-bin
 Requires: certbot-python3
+Requires: certbot-license
 Requires: certbot-python
 Requires: ConfigArgParse
 Requires: acme
@@ -66,7 +67,6 @@ BuildRequires : pyrfc3339
 BuildRequires : pyrfc3339-python
 BuildRequires : pytest
 BuildRequires : python-augeas
-
 BuildRequires : python-future-python3
 BuildRequires : python-mock
 BuildRequires : python-mock-python
@@ -95,9 +95,18 @@ without reading further documentation (see link below).
 %package bin
 Summary: bin components for the certbot package.
 Group: Binaries
+Requires: certbot-license
 
 %description bin
 bin components for the certbot package.
+
+
+%package license
+Summary: license components for the certbot package.
+Group: Default
+
+%description license
+license components for the certbot package.
 
 
 %package python
@@ -126,16 +135,33 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1528563307
+export SOURCE_DATE_EPOCH=1530386543
 python3 setup.py build -b py3
 
 %check
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python3.6/site-packages python3 setup.py test
+PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test
 %install
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/doc/certbot
+cp LICENSE.txt %{buildroot}/usr/share/doc/certbot/LICENSE.txt
+cp letshelp-certbot/LICENSE.txt %{buildroot}/usr/share/doc/certbot/letshelp-certbot_LICENSE.txt
+cp certbot-nginx/LICENSE.txt %{buildroot}/usr/share/doc/certbot/certbot-nginx_LICENSE.txt
+cp certbot-dns-route53/LICENSE %{buildroot}/usr/share/doc/certbot/certbot-dns-route53_LICENSE
+cp certbot-dns-rfc2136/LICENSE.txt %{buildroot}/usr/share/doc/certbot/certbot-dns-rfc2136_LICENSE.txt
+cp certbot-dns-nsone/LICENSE.txt %{buildroot}/usr/share/doc/certbot/certbot-dns-nsone_LICENSE.txt
+cp certbot-dns-luadns/LICENSE.txt %{buildroot}/usr/share/doc/certbot/certbot-dns-luadns_LICENSE.txt
+cp certbot-dns-google/LICENSE.txt %{buildroot}/usr/share/doc/certbot/certbot-dns-google_LICENSE.txt
+cp certbot-dns-dnsmadeeasy/LICENSE.txt %{buildroot}/usr/share/doc/certbot/certbot-dns-dnsmadeeasy_LICENSE.txt
+cp certbot-dns-dnsimple/LICENSE.txt %{buildroot}/usr/share/doc/certbot/certbot-dns-dnsimple_LICENSE.txt
+cp certbot-dns-digitalocean/LICENSE.txt %{buildroot}/usr/share/doc/certbot/certbot-dns-digitalocean_LICENSE.txt
+cp certbot-dns-cloudxns/LICENSE.txt %{buildroot}/usr/share/doc/certbot/certbot-dns-cloudxns_LICENSE.txt
+cp certbot-dns-cloudflare/LICENSE.txt %{buildroot}/usr/share/doc/certbot/certbot-dns-cloudflare_LICENSE.txt
+cp certbot-compatibility-test/LICENSE.txt %{buildroot}/usr/share/doc/certbot/certbot-compatibility-test_LICENSE.txt
+cp certbot-apache/LICENSE.txt %{buildroot}/usr/share/doc/certbot/certbot-apache_LICENSE.txt
+cp acme/LICENSE.txt %{buildroot}/usr/share/doc/certbot/acme_LICENSE.txt
 python3 -tt setup.py build -b py3 install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -156,6 +182,25 @@ done
 %files bin
 %defattr(-,root,root,-)
 /usr/bin/certbot
+
+%files license
+%defattr(-,root,root,-)
+/usr/share/doc/certbot/LICENSE.txt
+/usr/share/doc/certbot/acme_LICENSE.txt
+/usr/share/doc/certbot/certbot-apache_LICENSE.txt
+/usr/share/doc/certbot/certbot-compatibility-test_LICENSE.txt
+/usr/share/doc/certbot/certbot-dns-cloudflare_LICENSE.txt
+/usr/share/doc/certbot/certbot-dns-cloudxns_LICENSE.txt
+/usr/share/doc/certbot/certbot-dns-digitalocean_LICENSE.txt
+/usr/share/doc/certbot/certbot-dns-dnsimple_LICENSE.txt
+/usr/share/doc/certbot/certbot-dns-dnsmadeeasy_LICENSE.txt
+/usr/share/doc/certbot/certbot-dns-google_LICENSE.txt
+/usr/share/doc/certbot/certbot-dns-luadns_LICENSE.txt
+/usr/share/doc/certbot/certbot-dns-nsone_LICENSE.txt
+/usr/share/doc/certbot/certbot-dns-rfc2136_LICENSE.txt
+/usr/share/doc/certbot/certbot-dns-route53_LICENSE
+/usr/share/doc/certbot/certbot-nginx_LICENSE.txt
+/usr/share/doc/certbot/letshelp-certbot_LICENSE.txt
 
 %files python
 %defattr(-,root,root,-)
