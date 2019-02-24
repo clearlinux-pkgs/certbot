@@ -4,7 +4,7 @@
 #
 Name     : certbot
 Version  : 0.31.0
-Release  : 46
+Release  : 47
 URL      : https://github.com/certbot/certbot/archive/v0.31.0.tar.gz
 Source0  : https://github.com/certbot/certbot/archive/v0.31.0.tar.gz
 Summary  : A tool to automatically receive and install X.509 certificates to enable TLS on servers. The client will interoperate with the Let’s Encrypt CA which will be issuing browser-trusted certificates for free.
@@ -131,7 +131,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1550847912
+export SOURCE_DATE_EPOCH=1551038773
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
