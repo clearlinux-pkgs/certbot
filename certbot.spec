@@ -4,7 +4,7 @@
 #
 Name     : certbot
 Version  : 0.32.0
-Release  : 48
+Release  : 49
 URL      : https://github.com/certbot/certbot/archive/v0.32.0.tar.gz
 Source0  : https://github.com/certbot/certbot/archive/v0.32.0.tar.gz
 Summary  : A tool to automatically receive and install X.509 certificates to enable TLS on servers. The client will interoperate with the Let’s Encrypt CA which will be issuing browser-trusted certificates for free.
@@ -15,11 +15,9 @@ Requires: certbot-license = %{version}-%{release}
 Requires: certbot-python = %{version}-%{release}
 Requires: certbot-python3 = %{version}-%{release}
 Requires: ConfigArgParse
-Requires: PyYAML
 Requires: acme
 Requires: boto3
 Requires: configobj
-Requires: coverage
 Requires: cryptography
 Requires: dnspython
 Requires: google-api-python-client
@@ -30,10 +28,6 @@ Requires: parsedatetime
 Requires: pyOpenSSL
 Requires: pyparsing
 Requires: pyrfc3339
-Requires: pytest
-Requires: pytest-cov
-Requires: pytest-sugar
-Requires: pytest-xdist
 Requires: python-augeas
 Requires: python-future-python3
 Requires: python-mock
@@ -147,7 +141,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1551924411
+export SOURCE_DATE_EPOCH=1551976707
 export LDFLAGS="${LDFLAGS} -fno-lto"
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
