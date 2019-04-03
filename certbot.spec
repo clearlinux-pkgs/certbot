@@ -4,10 +4,10 @@
 #
 Name     : certbot
 Version  : 0.32.0
-Release  : 49
+Release  : 50
 URL      : https://github.com/certbot/certbot/archive/v0.32.0.tar.gz
 Source0  : https://github.com/certbot/certbot/archive/v0.32.0.tar.gz
-Summary  : A tool to automatically receive and install X.509 certificates to enable TLS on servers. The client will interoperate with the Let’s Encrypt CA which will be issuing browser-trusted certificates for free.
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Apache-2.0
 Requires: certbot-bin = %{version}-%{release}
@@ -16,6 +16,7 @@ Requires: certbot-python = %{version}-%{release}
 Requires: certbot-python3 = %{version}-%{release}
 Requires: ConfigArgParse
 Requires: acme
+Requires: augeas-lib
 Requires: boto3
 Requires: configobj
 Requires: cryptography
@@ -91,12 +92,10 @@ BuildRequires : zope.event-python
 BuildRequires : zope.interface
 
 %description
-This directory contains your keys and certificates.
-`privkey.pem`  : the private key for your certificate.
-`fullchain.pem`: the certificate file used in most server software.
-`chain.pem`    : used for OCSP stapling in Nginx >=1.3.7.
-`cert.pem`     : will break many server configurations, and should not be used
-without reading further documentation (see link below).
+Eventually there will also be a compatibility test here like the Apache one.
+Right now, this is data for the roundtrip test (checking that the parser
+can parse each file and that the reserialized config file it generates is
+identical to the original).
 
 %package bin
 Summary: bin components for the certbot package.
@@ -141,7 +140,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1551976707
+export SOURCE_DATE_EPOCH=1554316177
 export LDFLAGS="${LDFLAGS} -fno-lto"
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build

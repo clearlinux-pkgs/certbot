@@ -2,3 +2,4 @@
 # picked up automatically. One name per line, no whitespace.
 acme
 python-future-python3
+augeas-lib
