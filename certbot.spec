@@ -4,7 +4,7 @@
 #
 Name     : certbot
 Version  : 0.33.1
-Release  : 52
+Release  : 53
 URL      : https://github.com/certbot/certbot/archive/v0.33.1/certbot-0.33.1.tar.gz
 Source0  : https://github.com/certbot/certbot/archive/v0.33.1/certbot-0.33.1.tar.gz
 Summary  : No detailed summary available
