@@ -1,6 +1,7 @@
 for DIR in certbot-apache \
 		certbot-nginx \
 		certbot-nginx \
+		acme \
 		certbot-dns-cloudflare \
 		certbot-dns-cloudxns \
 		certbot-dns-digitalocean \
