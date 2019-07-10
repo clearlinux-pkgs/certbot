@@ -4,10 +4,10 @@
 #
 Name     : certbot
 Version  : 0.35.1
-Release  : 56
+Release  : 57
 URL      : https://github.com/certbot/certbot/archive/v0.35.1/certbot-0.35.1.tar.gz
 Source0  : https://github.com/certbot/certbot/archive/v0.35.1/certbot-0.35.1.tar.gz
-Summary  : A tool to automatically receive and install X.509 certificates to enable TLS on servers. The client will interoperate with the Let’s Encrypt CA which will be issuing browser-trusted certificates for free.
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Apache-2.0
 Requires: certbot-bin = %{version}-%{release}
@@ -91,7 +91,10 @@ BuildRequires : zope.event-python
 BuildRequires : zope.interface
 
 %description
-Certbot is part of EFFâs effort to encrypt the entire Internet. Secure communication over the Web relies on HTTPS, which requires the use of a digital certificate that lets browsers verify the identity of web servers (e.g., is that really google.com?). Web servers obtain their certificates from trusted third parties called certificate authorities (CAs). Certbot is an easy-to-use client that fetches a certificate from Letâs Encryptâan open certificate authority launched by the EFF, Mozilla, and othersâand deploys it to a web server.
+Eventually there will also be a compatibility test here like the Apache one.
+Right now, this is data for the roundtrip test (checking that the parser
+can parse each file and that the reserialized config file it generates is
+identical to the original).
 
 %package bin
 Summary: bin components for the certbot package.
@@ -135,8 +138,9 @@ python3 components for the certbot package.
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1560263499
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1562785499
+export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -182,7 +186,23 @@ echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
 ## install_append content
-for DIR in certbot-apache certbot-nginx certbot-nginx; do
+for DIR in certbot-apache \
+certbot-nginx \
+certbot-nginx \
+certbot-dns-cloudflare \
+certbot-dns-cloudxns \
+certbot-dns-digitalocean \
+certbot-dns-dnsimple \
+certbot-dns-dnsmadeeasy \
+certbot-dns-gehirn certbot-dns-google \
+certbot-dns-linode \
+certbot-dns-luadns \
+certbot-dns-nsone \
+certbot-dns-ovh \
+certbot-dns-rfc2136 \
+certbot-dns-route53 \
+certbot-dns-sakuracloud \
+certbot-postfix; do
 (
 cd ${DIR}
 python3 setup.py build -b py3
