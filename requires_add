@@ -3,3 +3,5 @@
 acme
 python-future-python3
 augeas-lib
+python-digitalocean
+cloudflare

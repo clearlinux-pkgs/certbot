@@ -4,10 +4,10 @@
 #
 Name     : certbot
 Version  : 0.35.1
-Release  : 60
+Release  : 61
 URL      : https://github.com/certbot/certbot/archive/v0.35.1/certbot-0.35.1.tar.gz
 Source0  : https://github.com/certbot/certbot/archive/v0.35.1/certbot-0.35.1.tar.gz
-Summary  : No detailed summary available
+Summary  : A tool to automatically receive and install X.509 certificates to enable TLS on servers. The client will interoperate with the Let’s Encrypt CA which will be issuing browser-trusted certificates for free.
 Group    : Development/Tools
 License  : Apache-2.0
 Requires: certbot-bin = %{version}-%{release}
@@ -18,6 +18,7 @@ Requires: ConfigArgParse
 Requires: acme
 Requires: augeas-lib
 Requires: boto3
+Requires: cloudflare
 Requires: configobj
 Requires: cryptography
 Requires: dns-lexicon
@@ -31,6 +32,7 @@ Requires: pyOpenSSL
 Requires: pyparsing
 Requires: pyrfc3339
 Requires: python-augeas
+Requires: python-digitalocean
 Requires: python-future-python3
 Requires: python-mock
 Requires: pytz
@@ -92,10 +94,7 @@ BuildRequires : zope.event-python
 BuildRequires : zope.interface
 
 %description
-Eventually there will also be a compatibility test here like the Apache one.
-Right now, this is data for the roundtrip test (checking that the parser
-can parse each file and that the reserialized config file it generates is
-identical to the original).
+Certbot is part of EFF’s effort to encrypt the entire Internet. Secure communication over the Web relies on HTTPS, which requires the use of a digital certificate that lets browsers verify the identity of web servers (e.g., is that really google.com?). Web servers obtain their certificates from trusted third parties called certificate authorities (CAs). Certbot is an easy-to-use client that fetches a certificate from Let’s Encrypt—an open certificate authority launched by the EFF, Mozilla, and others—and deploys it to a web server.
 
 %package bin
 Summary: bin components for the certbot package.
@@ -140,7 +139,8 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1571160082
+export SOURCE_DATE_EPOCH=1571163680
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
