@@ -16,7 +16,6 @@ acme
 python-future-python3
 cffi-python
 cffi
-enum34-python
 pyasn1-python
 pycparser-python
 pycparser

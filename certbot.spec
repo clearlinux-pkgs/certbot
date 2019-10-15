@@ -4,7 +4,7 @@
 #
 Name     : certbot
 Version  : 0.35.1
-Release  : 59
+Release  : 60
 URL      : https://github.com/certbot/certbot/archive/v0.35.1/certbot-0.35.1.tar.gz
 Source0  : https://github.com/certbot/certbot/archive/v0.35.1/certbot-0.35.1.tar.gz
 Summary  : No detailed summary available
@@ -20,6 +20,7 @@ Requires: augeas-lib
 Requires: boto3
 Requires: configobj
 Requires: cryptography
+Requires: dns-lexicon
 Requires: dnspython
 Requires: google-api-python-client
 Requires: httplib2
@@ -52,8 +53,8 @@ BuildRequires : configobj
 BuildRequires : configobj-python
 BuildRequires : coverage
 BuildRequires : cryptography
+BuildRequires : dns-lexicon
 BuildRequires : dnspython
-BuildRequires : enum34-python
 BuildRequires : google-api-python-client
 BuildRequires : httplib2
 BuildRequires : josepy
@@ -139,7 +140,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1562792270
+export SOURCE_DATE_EPOCH=1571160082
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -160,27 +161,27 @@ PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test ||
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/certbot
-cp LICENSE.txt %{buildroot}/usr/share/package-licenses/certbot/LICENSE.txt
-cp acme/LICENSE.txt %{buildroot}/usr/share/package-licenses/certbot/acme_LICENSE.txt
-cp certbot-apache/LICENSE.txt %{buildroot}/usr/share/package-licenses/certbot/certbot-apache_LICENSE.txt
-cp certbot-compatibility-test/LICENSE.txt %{buildroot}/usr/share/package-licenses/certbot/certbot-compatibility-test_LICENSE.txt
-cp certbot-dns-cloudflare/LICENSE.txt %{buildroot}/usr/share/package-licenses/certbot/certbot-dns-cloudflare_LICENSE.txt
-cp certbot-dns-cloudxns/LICENSE.txt %{buildroot}/usr/share/package-licenses/certbot/certbot-dns-cloudxns_LICENSE.txt
-cp certbot-dns-digitalocean/LICENSE.txt %{buildroot}/usr/share/package-licenses/certbot/certbot-dns-digitalocean_LICENSE.txt
-cp certbot-dns-dnsimple/LICENSE.txt %{buildroot}/usr/share/package-licenses/certbot/certbot-dns-dnsimple_LICENSE.txt
-cp certbot-dns-dnsmadeeasy/LICENSE.txt %{buildroot}/usr/share/package-licenses/certbot/certbot-dns-dnsmadeeasy_LICENSE.txt
-cp certbot-dns-gehirn/LICENSE.txt %{buildroot}/usr/share/package-licenses/certbot/certbot-dns-gehirn_LICENSE.txt
-cp certbot-dns-google/LICENSE.txt %{buildroot}/usr/share/package-licenses/certbot/certbot-dns-google_LICENSE.txt
-cp certbot-dns-linode/LICENSE.txt %{buildroot}/usr/share/package-licenses/certbot/certbot-dns-linode_LICENSE.txt
-cp certbot-dns-luadns/LICENSE.txt %{buildroot}/usr/share/package-licenses/certbot/certbot-dns-luadns_LICENSE.txt
-cp certbot-dns-nsone/LICENSE.txt %{buildroot}/usr/share/package-licenses/certbot/certbot-dns-nsone_LICENSE.txt
-cp certbot-dns-ovh/LICENSE.txt %{buildroot}/usr/share/package-licenses/certbot/certbot-dns-ovh_LICENSE.txt
-cp certbot-dns-rfc2136/LICENSE.txt %{buildroot}/usr/share/package-licenses/certbot/certbot-dns-rfc2136_LICENSE.txt
-cp certbot-dns-route53/LICENSE %{buildroot}/usr/share/package-licenses/certbot/certbot-dns-route53_LICENSE
-cp certbot-dns-sakuracloud/LICENSE.txt %{buildroot}/usr/share/package-licenses/certbot/certbot-dns-sakuracloud_LICENSE.txt
-cp certbot-nginx/LICENSE.txt %{buildroot}/usr/share/package-licenses/certbot/certbot-nginx_LICENSE.txt
-cp certbot-postfix/LICENSE.txt %{buildroot}/usr/share/package-licenses/certbot/certbot-postfix_LICENSE.txt
-cp letshelp-certbot/LICENSE.txt %{buildroot}/usr/share/package-licenses/certbot/letshelp-certbot_LICENSE.txt
+cp %{_builddir}/certbot-0.35.1/LICENSE.txt %{buildroot}/usr/share/package-licenses/certbot/4bdc361ecc9ed00f502ec709aabdf54cc856b5cb
+cp %{_builddir}/certbot-0.35.1/acme/LICENSE.txt %{buildroot}/usr/share/package-licenses/certbot/d095fa0d394cc9417a65aecd0d28e7d10e762f98
+cp %{_builddir}/certbot-0.35.1/certbot-apache/LICENSE.txt %{buildroot}/usr/share/package-licenses/certbot/d095fa0d394cc9417a65aecd0d28e7d10e762f98
+cp %{_builddir}/certbot-0.35.1/certbot-compatibility-test/LICENSE.txt %{buildroot}/usr/share/package-licenses/certbot/d095fa0d394cc9417a65aecd0d28e7d10e762f98
+cp %{_builddir}/certbot-0.35.1/certbot-dns-cloudflare/LICENSE.txt %{buildroot}/usr/share/package-licenses/certbot/d095fa0d394cc9417a65aecd0d28e7d10e762f98
+cp %{_builddir}/certbot-0.35.1/certbot-dns-cloudxns/LICENSE.txt %{buildroot}/usr/share/package-licenses/certbot/d095fa0d394cc9417a65aecd0d28e7d10e762f98
+cp %{_builddir}/certbot-0.35.1/certbot-dns-digitalocean/LICENSE.txt %{buildroot}/usr/share/package-licenses/certbot/d095fa0d394cc9417a65aecd0d28e7d10e762f98
+cp %{_builddir}/certbot-0.35.1/certbot-dns-dnsimple/LICENSE.txt %{buildroot}/usr/share/package-licenses/certbot/d095fa0d394cc9417a65aecd0d28e7d10e762f98
+cp %{_builddir}/certbot-0.35.1/certbot-dns-dnsmadeeasy/LICENSE.txt %{buildroot}/usr/share/package-licenses/certbot/d095fa0d394cc9417a65aecd0d28e7d10e762f98
+cp %{_builddir}/certbot-0.35.1/certbot-dns-gehirn/LICENSE.txt %{buildroot}/usr/share/package-licenses/certbot/d706715c5c263c4fcfd50231edb7889ae9711747
+cp %{_builddir}/certbot-0.35.1/certbot-dns-google/LICENSE.txt %{buildroot}/usr/share/package-licenses/certbot/d095fa0d394cc9417a65aecd0d28e7d10e762f98
+cp %{_builddir}/certbot-0.35.1/certbot-dns-linode/LICENSE.txt %{buildroot}/usr/share/package-licenses/certbot/d095fa0d394cc9417a65aecd0d28e7d10e762f98
+cp %{_builddir}/certbot-0.35.1/certbot-dns-luadns/LICENSE.txt %{buildroot}/usr/share/package-licenses/certbot/d095fa0d394cc9417a65aecd0d28e7d10e762f98
+cp %{_builddir}/certbot-0.35.1/certbot-dns-nsone/LICENSE.txt %{buildroot}/usr/share/package-licenses/certbot/d095fa0d394cc9417a65aecd0d28e7d10e762f98
+cp %{_builddir}/certbot-0.35.1/certbot-dns-ovh/LICENSE.txt %{buildroot}/usr/share/package-licenses/certbot/d095fa0d394cc9417a65aecd0d28e7d10e762f98
+cp %{_builddir}/certbot-0.35.1/certbot-dns-rfc2136/LICENSE.txt %{buildroot}/usr/share/package-licenses/certbot/d095fa0d394cc9417a65aecd0d28e7d10e762f98
+cp %{_builddir}/certbot-0.35.1/certbot-dns-route53/LICENSE %{buildroot}/usr/share/package-licenses/certbot/92170cdc034b2ff819323ff670d3b7266c8bffcd
+cp %{_builddir}/certbot-0.35.1/certbot-dns-sakuracloud/LICENSE.txt %{buildroot}/usr/share/package-licenses/certbot/d706715c5c263c4fcfd50231edb7889ae9711747
+cp %{_builddir}/certbot-0.35.1/certbot-nginx/LICENSE.txt %{buildroot}/usr/share/package-licenses/certbot/affa5dedd6ca7042fe64265d0c0433bc15b96f89
+cp %{_builddir}/certbot-0.35.1/certbot-postfix/LICENSE.txt %{buildroot}/usr/share/package-licenses/certbot/4bb72f0e70a9828e794425cb387c7dd69fffc9f9
+cp %{_builddir}/certbot-0.35.1/letshelp-certbot/LICENSE.txt %{buildroot}/usr/share/package-licenses/certbot/d095fa0d394cc9417a65aecd0d28e7d10e762f98
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -220,27 +221,12 @@ done
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/certbot/LICENSE.txt
-/usr/share/package-licenses/certbot/acme_LICENSE.txt
-/usr/share/package-licenses/certbot/certbot-apache_LICENSE.txt
-/usr/share/package-licenses/certbot/certbot-compatibility-test_LICENSE.txt
-/usr/share/package-licenses/certbot/certbot-dns-cloudflare_LICENSE.txt
-/usr/share/package-licenses/certbot/certbot-dns-cloudxns_LICENSE.txt
-/usr/share/package-licenses/certbot/certbot-dns-digitalocean_LICENSE.txt
-/usr/share/package-licenses/certbot/certbot-dns-dnsimple_LICENSE.txt
-/usr/share/package-licenses/certbot/certbot-dns-dnsmadeeasy_LICENSE.txt
-/usr/share/package-licenses/certbot/certbot-dns-gehirn_LICENSE.txt
-/usr/share/package-licenses/certbot/certbot-dns-google_LICENSE.txt
-/usr/share/package-licenses/certbot/certbot-dns-linode_LICENSE.txt
-/usr/share/package-licenses/certbot/certbot-dns-luadns_LICENSE.txt
-/usr/share/package-licenses/certbot/certbot-dns-nsone_LICENSE.txt
-/usr/share/package-licenses/certbot/certbot-dns-ovh_LICENSE.txt
-/usr/share/package-licenses/certbot/certbot-dns-rfc2136_LICENSE.txt
-/usr/share/package-licenses/certbot/certbot-dns-route53_LICENSE
-/usr/share/package-licenses/certbot/certbot-dns-sakuracloud_LICENSE.txt
-/usr/share/package-licenses/certbot/certbot-nginx_LICENSE.txt
-/usr/share/package-licenses/certbot/certbot-postfix_LICENSE.txt
-/usr/share/package-licenses/certbot/letshelp-certbot_LICENSE.txt
+/usr/share/package-licenses/certbot/4bb72f0e70a9828e794425cb387c7dd69fffc9f9
+/usr/share/package-licenses/certbot/4bdc361ecc9ed00f502ec709aabdf54cc856b5cb
+/usr/share/package-licenses/certbot/92170cdc034b2ff819323ff670d3b7266c8bffcd
+/usr/share/package-licenses/certbot/affa5dedd6ca7042fe64265d0c0433bc15b96f89
+/usr/share/package-licenses/certbot/d095fa0d394cc9417a65aecd0d28e7d10e762f98
+/usr/share/package-licenses/certbot/d706715c5c263c4fcfd50231edb7889ae9711747
 
 %files python
 %defattr(-,root,root,-)
