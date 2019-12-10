@@ -4,10 +4,10 @@
 #
 Name     : certbot
 Version  : 0.35.1
-Release  : 62
+Release  : 63
 URL      : https://github.com/certbot/certbot/archive/v0.35.1/certbot-0.35.1.tar.gz
 Source0  : https://github.com/certbot/certbot/archive/v0.35.1/certbot-0.35.1.tar.gz
-Summary  : A tool to automatically receive and install X.509 certificates to enable TLS on servers. The client will interoperate with the Let’s Encrypt CA which will be issuing browser-trusted certificates for free.
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Apache-2.0
 Requires: certbot-bin = %{version}-%{release}
@@ -51,6 +51,7 @@ BuildRequires : boto3
 BuildRequires : buildreq-distutils3
 BuildRequires : cffi
 BuildRequires : cffi-python
+BuildRequires : cloudflare
 BuildRequires : configobj
 BuildRequires : configobj-python
 BuildRequires : coverage
@@ -77,6 +78,7 @@ BuildRequires : pytest
 BuildRequires : pytest-cov
 BuildRequires : pytest-xdist
 BuildRequires : python-augeas
+BuildRequires : python-digitalocean
 BuildRequires : python-future-python3
 BuildRequires : python-mock
 BuildRequires : python-mock-python
@@ -94,7 +96,10 @@ BuildRequires : zope.event-python
 BuildRequires : zope.interface
 
 %description
-Certbot is part of EFF’s effort to encrypt the entire Internet. Secure communication over the Web relies on HTTPS, which requires the use of a digital certificate that lets browsers verify the identity of web servers (e.g., is that really google.com?). Web servers obtain their certificates from trusted third parties called certificate authorities (CAs). Certbot is an easy-to-use client that fetches a certificate from Let’s Encrypt—an open certificate authority launched by the EFF, Mozilla, and others—and deploys it to a web server.
+Eventually there will also be a compatibility test here like the Apache one.
+Right now, this is data for the roundtrip test (checking that the parser
+can parse each file and that the reserialized config file it generates is
+identical to the original).
 
 %package bin
 Summary: bin components for the certbot package.
@@ -133,14 +138,14 @@ python3 components for the certbot package.
 
 %prep
 %setup -q -n certbot-0.35.1
+cd %{_builddir}/certbot-0.35.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1571163680
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1576009106
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -156,7 +161,7 @@ python3 setup.py build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test || :
+PYTHONPATH=%{buildroot}$(python -c "import sys; print(sys.path[-1])") python setup.py test || :
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
@@ -210,6 +215,7 @@ python3 setup.py build -b py3
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
 )
 done
+
 ## install_append end
 
 %files
