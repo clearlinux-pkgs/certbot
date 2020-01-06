@@ -4,7 +4,7 @@
 #
 Name     : certbot
 Version  : 1.0.0
-Release  : 64
+Release  : 65
 URL      : https://github.com/certbot/certbot/archive/v1.0.0/certbot-1.0.0.tar.gz
 Source0  : https://github.com/certbot/certbot/archive/v1.0.0/certbot-1.0.0.tar.gz
 Summary  : No detailed summary available
@@ -149,7 +149,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1577050791
+export SOURCE_DATE_EPOCH=1578345924
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -197,7 +197,6 @@ echo ----[ mark ]----
 ## install_append content
 for DIR in certbot-apache \
 certbot-apache \
-certbot-ci \
 certbot-dns-cloudflare \
 certbot-dns-cloudxns \
 certbot-dns-digitalocean \
@@ -229,8 +228,6 @@ done
 %files bin
 %defattr(-,root,root,-)
 /usr/bin/certbot
-/usr/bin/certbot_test
-/usr/bin/run_acme_server
 
 %files license
 %defattr(0644,root,root,0755)
