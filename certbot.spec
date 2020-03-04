@@ -4,10 +4,10 @@
 #
 Name     : certbot
 Version  : 1.0.0
-Release  : 65
+Release  : 66
 URL      : https://github.com/certbot/certbot/archive/v1.0.0/certbot-1.0.0.tar.gz
 Source0  : https://github.com/certbot/certbot/archive/v1.0.0/certbot-1.0.0.tar.gz
-Summary  : No detailed summary available
+Summary  : A tool to automatically receive and install X.509 certificates to enable TLS on servers. The client will interoperate with the Let’s Encrypt CA which will be issuing browser-trusted certificates for free.
 Group    : Development/Tools
 License  : Apache-2.0
 Requires: certbot-bin = %{version}-%{release}
@@ -31,7 +31,6 @@ Requires: oauth2client
 Requires: parsedatetime
 Requires: pyOpenSSL
 Requires: pyparsing
-Requires: pyrfc3339
 Requires: python-augeas
 Requires: python-dateutil
 Requires: python-digitalocean
@@ -71,12 +70,11 @@ BuildRequires : parsedatetime-python
 BuildRequires : pluggy
 BuildRequires : py-python
 BuildRequires : pyOpenSSL
+BuildRequires : pyRFC3339-python
 BuildRequires : pyasn1-python
 BuildRequires : pycparser
 BuildRequires : pycparser-python
 BuildRequires : pyparsing
-BuildRequires : pyrfc3339
-BuildRequires : pyrfc3339-python
 BuildRequires : pytest
 BuildRequires : pytest-cov
 BuildRequires : pytest-xdist
@@ -100,10 +98,7 @@ BuildRequires : zope.event-python
 BuildRequires : zope.interface
 
 %description
-Eventually there will also be a compatibility test here like the Apache one.
-Right now, this is data for the roundtrip test (checking that the parser
-can parse each file and that the reserialized config file it generates is
-identical to the original).
+Certbot is part of EFF’s effort to encrypt the entire Internet. Secure communication over the Web relies on HTTPS, which requires the use of a digital certificate that lets browsers verify the identity of web servers (e.g., is that really google.com?). Web servers obtain their certificates from trusted third parties called certificate authorities (CAs). Certbot is an easy-to-use client that fetches a certificate from Let’s Encrypt—an open certificate authority launched by the EFF, Mozilla, and others—and deploys it to a web server.
 
 %package bin
 Summary: bin components for the certbot package.
@@ -135,6 +130,35 @@ python components for the certbot package.
 Summary: python3 components for the certbot package.
 Group: Default
 Requires: python3-core
+Provides: pypi(certbot)
+Requires: pypi(mypy)
+Requires: pypi(wheel)
+Requires: pypi(zope.interface)
+Requires: pypi(cryptography)
+Requires: pypi(pytz)
+Requires: pypi(pylint)
+Requires: pypi(twine)
+Requires: pypi(repoze.sphinx.autointerface)
+Requires: pypi(astroid)
+Requires: pypi(pytest-cov)
+Requires: pypi(tox)
+Requires: pypi(typing)
+Requires: pypi(sphinx-rtd-theme)
+Requires: pypi(pytest-xdist)
+Requires: pypi(setuptools)
+Requires: pypi(pytest)
+Requires: pypi(josepy)
+Requires: pypi(ipdb)
+Requires: pypi(configobj)
+Requires: pypi(acme)
+Requires: pypi(coverage)
+Requires: pypi(Sphinx)
+Requires: pypi(mock)
+Requires: pypi(zope.component)
+Requires: pypi(pyrfc3339)
+Requires: pypi(parsedatetime)
+Requires: pypi(distro)
+Requires: pypi(ConfigArgParse)
 
 %description python3
 python3 components for the certbot package.
@@ -149,7 +173,8 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1578345924
+export SOURCE_DATE_EPOCH=1583295954
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib

@@ -5,7 +5,7 @@ zope.component-python
 six-python
 six
 pytz-python
-pyrfc3339-python
+pyRFC3339-python
 pyOpenSSL
 parsedatetime-python
 configobj-python
