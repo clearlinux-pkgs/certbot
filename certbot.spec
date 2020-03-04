@@ -130,35 +130,19 @@ python components for the certbot package.
 Summary: python3 components for the certbot package.
 Group: Default
 Requires: python3-core
-Provides: pypi(certbot)
-Requires: pypi(mypy)
-Requires: pypi(wheel)
 Requires: pypi(zope.interface)
 Requires: pypi(cryptography)
 Requires: pypi(pytz)
 Requires: pypi(pylint)
 Requires: pypi(twine)
-Requires: pypi(repoze.sphinx.autointerface)
 Requires: pypi(astroid)
 Requires: pypi(pytest-cov)
 Requires: pypi(tox)
 Requires: pypi(typing)
 Requires: pypi(sphinx-rtd-theme)
-Requires: pypi(pytest-xdist)
-Requires: pypi(setuptools)
-Requires: pypi(pytest)
-Requires: pypi(josepy)
-Requires: pypi(ipdb)
 Requires: pypi(configobj)
 Requires: pypi(acme)
 Requires: pypi(coverage)
-Requires: pypi(Sphinx)
-Requires: pypi(mock)
-Requires: pypi(zope.component)
-Requires: pypi(pyrfc3339)
-Requires: pypi(parsedatetime)
-Requires: pypi(distro)
-Requires: pypi(ConfigArgParse)
 
 %description python3
 python3 components for the certbot package.
