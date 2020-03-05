@@ -4,7 +4,7 @@
 #
 Name     : certbot
 Version  : 1.3.0
-Release  : 70
+Release  : 71
 URL      : https://github.com/certbot/certbot/archive/v1.3.0/certbot-1.3.0.tar.gz
 Source0  : https://github.com/certbot/certbot/archive/v1.3.0/certbot-1.3.0.tar.gz
 Summary  : A tool to automatically receive and install X.509 certificates to enable TLS on servers. The client will interoperate with the Let’s Encrypt CA which will be issuing browser-trusted certificates for free.
