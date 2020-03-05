@@ -156,7 +156,6 @@ Requires: pypi(pytest-xdist)
 Requires: pypi(coverage)
 Requires: pypi(pytest)
 Requires: pypi(astroid)
-Requires: pypi(twine)
 Requires: pypi(configobj)
 Requires: pypi(distro)
 
