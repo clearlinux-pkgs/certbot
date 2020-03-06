@@ -4,10 +4,10 @@
 #
 Name     : certbot
 Version  : 1.3.0
-Release  : 71
+Release  : 72
 URL      : https://github.com/certbot/certbot/archive/v1.3.0/certbot-1.3.0.tar.gz
 Source0  : https://github.com/certbot/certbot/archive/v1.3.0/certbot-1.3.0.tar.gz
-Summary  : A tool to automatically receive and install X.509 certificates to enable TLS on servers. The client will interoperate with the Let’s Encrypt CA which will be issuing browser-trusted certificates for free.
+Summary  : ACME client
 Group    : Development/Tools
 License  : Apache-2.0
 Requires: certbot-bin = %{version}-%{release}
@@ -100,7 +100,10 @@ BuildRequires : zope.event-python
 BuildRequires : zope.interface
 
 %description
-Certbot is part of EFF’s effort to encrypt the entire Internet. Secure communication over the Web relies on HTTPS, which requires the use of a digital certificate that lets browsers verify the identity of web servers (e.g., is that really google.com?). Web servers obtain their certificates from trusted third parties called certificate authorities (CAs). Certbot is an easy-to-use client that fetches a certificate from Let’s Encrypt—an open certificate authority launched by the EFF, Mozilla, and others—and deploys it to a web server.
+Eventually there will also be a compatibility test here like the Apache one.
+Right now, this is data for the roundtrip test (checking that the parser
+can parse each file and that the reserialized config file it generates is
+identical to the original).
 
 %package bin
 Summary: bin components for the certbot package.
@@ -134,30 +137,18 @@ Group: Default
 Requires: python3-core
 Provides: pypi(certbot)
 Requires: pypi(acme)
-Requires: pypi(parsedatetime)
-Requires: pypi(josepy)
-Requires: pypi(zope.component)
-Requires: pypi(mock)
-Requires: pypi(zope.interface)
-Requires: pypi(pytz)
-Requires: pypi(pytest-cov)
-Requires: pypi(wheel)
-Requires: pypi(cryptography)
-Requires: pypi(repoze.sphinx.autointerface)
-Requires: pypi(mypy)
-Requires: pypi(tox)
-Requires: pypi(Sphinx)
-Requires: pypi(setuptools)
-Requires: pypi(ipdb)
-Requires: pypi(ConfigArgParse)
-Requires: pypi(sphinx-rtd-theme)
-Requires: pypi(pylint)
-Requires: pypi(pytest-xdist)
-Requires: pypi(coverage)
-Requires: pypi(pytest)
-Requires: pypi(astroid)
+Requires: pypi(configargparse)
 Requires: pypi(configobj)
+Requires: pypi(cryptography)
 Requires: pypi(distro)
+Requires: pypi(josepy)
+Requires: pypi(mock)
+Requires: pypi(parsedatetime)
+Requires: pypi(pyrfc3339)
+Requires: pypi(pytz)
+Requires: pypi(setuptools)
+Requires: pypi(zope.component)
+Requires: pypi(zope.interface)
 
 %description python3
 python3 components for the certbot package.
@@ -172,8 +163,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1583333500
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1583456126
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
