@@ -4,7 +4,7 @@
 #
 Name     : certbot
 Version  : 1.12.0
-Release  : 86
+Release  : 87
 URL      : https://github.com/certbot/certbot/archive/v1.12.0/certbot-1.12.0.tar.gz
 Source0  : https://github.com/certbot/certbot/archive/v1.12.0/certbot-1.12.0.tar.gz
 Summary  : ACME client
