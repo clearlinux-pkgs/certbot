@@ -163,3 +163,9 @@ yarg
 zipp
 zope.event
 zope.hookable
+acme
+pypi(appnope)
+pypi(certbot_apache)
+pypi(lockfile)
+pypi(pypiwin32)
+pypi(pywin32_ctypes)
