@@ -4,7 +4,7 @@
 #
 Name     : certbot
 Version  : 1.22.0
-Release  : 99
+Release  : 100
 URL      : https://github.com/certbot/certbot/archive/v1.22.0/certbot-1.22.0.tar.gz
 Source0  : https://github.com/certbot/certbot/archive/v1.22.0/certbot-1.22.0.tar.gz
 Summary  : ACME client
@@ -15,7 +15,6 @@ Requires: certbot-license = %{version}-%{release}
 Requires: certbot-python = %{version}-%{release}
 Requires: certbot-python3 = %{version}-%{release}
 Requires: ConfigArgParse
-Requires: acme
 Requires: augeas
 Requires: boto3
 Requires: cloudflare
@@ -33,6 +32,7 @@ Requires: parsedatetime
 Requires: pyOpenSSL
 Requires: pyRFC3339
 Requires: pyparsing
+Requires: pypi(acme)
 Requires: python-augeas
 Requires: python-digitalocean
 Requires: python-future
@@ -327,7 +327,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1641400951
+export SOURCE_DATE_EPOCH=1641401686
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
