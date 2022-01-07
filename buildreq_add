@@ -3,7 +3,7 @@
 ConfigArgParse
 pypi(acme)
 augeas
-boto3
+pypi(boto3)
 cloudflare
 configobj
 cryptography
@@ -12,7 +12,7 @@ dns-lexicon
 dnspython
 google-api-python-client
 httplib2
-josepy
+pypi(josepy)
 ndg_httpsclient
 oauth2client
 parsedatetime
@@ -23,6 +23,6 @@ python-augeas
 python-digitalocean
 python-future
 pytz
-setuptools
+pypi(setuptools)
 zope.component
 zope.interface

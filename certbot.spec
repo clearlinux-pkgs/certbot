@@ -4,7 +4,7 @@
 #
 Name     : certbot
 Version  : 1.22.0
-Release  : 100
+Release  : 101
 URL      : https://github.com/certbot/certbot/archive/v1.22.0/certbot-1.22.0.tar.gz
 Source0  : https://github.com/certbot/certbot/archive/v1.22.0/certbot-1.22.0.tar.gz
 Summary  : ACME client
@@ -42,7 +42,6 @@ Requires: zope.component
 Requires: zope.interface
 BuildRequires : ConfigArgParse
 BuildRequires : augeas
-BuildRequires : boto3
 BuildRequires : buildreq-distutils3
 BuildRequires : cloudflare
 BuildRequires : configobj
@@ -52,11 +51,9 @@ BuildRequires : dns-lexicon
 BuildRequires : dnspython
 BuildRequires : google-api-python-client
 BuildRequires : httplib2
-BuildRequires : josepy
 BuildRequires : ndg_httpsclient
 BuildRequires : oauth2client
 BuildRequires : parsedatetime
-BuildRequires : py-python
 BuildRequires : pyOpenSSL
 BuildRequires : pyRFC3339
 BuildRequires : pyparsing
@@ -250,12 +247,10 @@ BuildRequires : pypi(zope.component)
 BuildRequires : pypi(zope.event)
 BuildRequires : pypi(zope.hookable)
 BuildRequires : pypi(zope.interface)
-BuildRequires : pytest
 BuildRequires : python-augeas
 BuildRequires : python-digitalocean
 BuildRequires : python-future
 BuildRequires : pytz
-BuildRequires : setuptools
 BuildRequires : zope.component
 BuildRequires : zope.interface
 
@@ -327,7 +322,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1641401686
+export SOURCE_DATE_EPOCH=1641590232
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
