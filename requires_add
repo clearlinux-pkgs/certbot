@@ -12,7 +12,7 @@ dns-lexicon
 dnspython
 google-api-python-client
 httplib2
-josepy
+pypi(josepy)
 ndg_httpsclient
 oauth2client
 parsedatetime

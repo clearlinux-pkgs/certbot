@@ -4,7 +4,7 @@
 #
 Name     : certbot
 Version  : 1.22.0
-Release  : 102
+Release  : 103
 URL      : https://github.com/certbot/certbot/archive/v1.22.0/certbot-1.22.0.tar.gz
 Source0  : https://github.com/certbot/certbot/archive/v1.22.0/certbot-1.22.0.tar.gz
 Summary  : ACME client
@@ -25,7 +25,6 @@ Requires: dns-lexicon
 Requires: dnspython
 Requires: google-api-python-client
 Requires: httplib2
-Requires: josepy
 Requires: ndg_httpsclient
 Requires: oauth2client
 Requires: parsedatetime
@@ -33,6 +32,7 @@ Requires: pyOpenSSL
 Requires: pyRFC3339
 Requires: pyparsing
 Requires: pypi(acme)
+Requires: pypi(josepy)
 Requires: python-augeas
 Requires: python-digitalocean
 Requires: python-future
@@ -309,7 +309,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1641590504
+export SOURCE_DATE_EPOCH=1641596153
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
