@@ -4,7 +4,7 @@
 #
 Name     : certbot
 Version  : 1.22.0
-Release  : 104
+Release  : 105
 URL      : https://github.com/certbot/certbot/archive/v1.22.0/certbot-1.22.0.tar.gz
 Source0  : https://github.com/certbot/certbot/archive/v1.22.0/certbot-1.22.0.tar.gz
 Summary  : ACME client
@@ -14,36 +14,7 @@ Requires: certbot-bin = %{version}-%{release}
 Requires: certbot-license = %{version}-%{release}
 Requires: certbot-python = %{version}-%{release}
 Requires: certbot-python3 = %{version}-%{release}
-Requires: augeas
-Requires: google-api-python-client
-Requires: httplib2
-Requires: ndg_httpsclient
-Requires: pypi(acme)
-Requires: pypi(boto3)
-Requires: pypi(cloudflare)
-Requires: pypi(configargparse)
-Requires: pypi(configobj)
-Requires: pypi(cryptography)
-Requires: pypi(distro)
-Requires: pypi(dns_lexicon)
-Requires: pypi(dnspython)
-Requires: pypi(josepy)
-Requires: pypi(oauth2client)
-Requires: pypi(parsedatetime)
-Requires: pypi(pyopenssl)
-Requires: pypi(pyparsing)
-Requires: pypi(pyrfc3339)
-Requires: pypi(python_augeas)
-Requires: pypi(python_digitalocean)
-Requires: pypi(pytz)
-Requires: pypi(setuptools)
-Requires: pypi(zope.component)
-Requires: pypi(zope.interface)
-Requires: python-future
-BuildRequires : augeas
 BuildRequires : buildreq-distutils3
-BuildRequires : ndg_httpsclient
-BuildRequires : pypi(acme)
 BuildRequires : pypi(alabaster)
 BuildRequires : pypi(apacheconfig)
 BuildRequires : pypi(appdirs)
@@ -233,7 +204,10 @@ BuildRequires : pypi(zope.component)
 BuildRequires : pypi(zope.event)
 BuildRequires : pypi(zope.hookable)
 BuildRequires : pypi(zope.interface)
-BuildRequires : python-future
+BuildRequires : pypi-pluggy
+BuildRequires : pypi-pytest
+BuildRequires : pypi-tox
+BuildRequires : pypi-virtualenv
 
 %description
 Eventually there will also be a compatibility test here like the Apache one.
@@ -303,7 +277,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1641653948
+export SOURCE_DATE_EPOCH=1641684524
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib

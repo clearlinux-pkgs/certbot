@@ -1,28 +1,2 @@
 # This file contains additional runtime requirements that did not get
 # picked up automatically. One name per line, no whitespace.
-pypi(configargparse)
-pypi(acme)
-augeas
-pypi(boto3)
-pypi(cloudflare)
-pypi(configobj)
-pypi(cryptography)
-pypi(distro)
-pypi(dns_lexicon)
-pypi(dnspython)
-google-api-python-client
-httplib2
-pypi(josepy)
-ndg_httpsclient
-pypi(oauth2client)
-pypi(parsedatetime)
-pypi(pyopenssl)
-pypi(pyrfc3339)
-pypi(pyparsing)
-pypi(python_augeas)
-pypi(python_digitalocean)
-python-future
-pypi(pytz)
-pypi(setuptools)
-pypi(zope.component)
-pypi(zope.interface)
