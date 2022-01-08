@@ -4,7 +4,7 @@
 #
 Name     : certbot
 Version  : 1.22.0
-Release  : 103
+Release  : 104
 URL      : https://github.com/certbot/certbot/archive/v1.22.0/certbot-1.22.0.tar.gz
 Source0  : https://github.com/certbot/certbot/archive/v1.22.0/certbot-1.22.0.tar.gz
 Summary  : ACME client
@@ -14,40 +14,35 @@ Requires: certbot-bin = %{version}-%{release}
 Requires: certbot-license = %{version}-%{release}
 Requires: certbot-python = %{version}-%{release}
 Requires: certbot-python3 = %{version}-%{release}
-Requires: ConfigArgParse
 Requires: augeas
-Requires: boto3
-Requires: cloudflare
-Requires: configobj
-Requires: cryptography
-Requires: distro
-Requires: dns-lexicon
-Requires: dnspython
 Requires: google-api-python-client
 Requires: httplib2
 Requires: ndg_httpsclient
-Requires: oauth2client
-Requires: parsedatetime
-Requires: pyOpenSSL
-Requires: pyRFC3339
-Requires: pyparsing
 Requires: pypi(acme)
+Requires: pypi(boto3)
+Requires: pypi(cloudflare)
+Requires: pypi(configargparse)
+Requires: pypi(configobj)
+Requires: pypi(cryptography)
+Requires: pypi(distro)
+Requires: pypi(dns_lexicon)
+Requires: pypi(dnspython)
 Requires: pypi(josepy)
-Requires: python-augeas
-Requires: python-digitalocean
+Requires: pypi(oauth2client)
+Requires: pypi(parsedatetime)
+Requires: pypi(pyopenssl)
+Requires: pypi(pyparsing)
+Requires: pypi(pyrfc3339)
+Requires: pypi(python_augeas)
+Requires: pypi(python_digitalocean)
+Requires: pypi(pytz)
+Requires: pypi(setuptools)
+Requires: pypi(zope.component)
+Requires: pypi(zope.interface)
 Requires: python-future
-Requires: pytz
-Requires: setuptools
-Requires: zope.component
-Requires: zope.interface
-BuildRequires : ConfigArgParse
 BuildRequires : augeas
 BuildRequires : buildreq-distutils3
-BuildRequires : cryptography
 BuildRequires : ndg_httpsclient
-BuildRequires : oauth2client
-BuildRequires : pyOpenSSL
-BuildRequires : pyRFC3339
 BuildRequires : pypi(acme)
 BuildRequires : pypi(alabaster)
 BuildRequires : pypi(apacheconfig)
@@ -239,7 +234,6 @@ BuildRequires : pypi(zope.event)
 BuildRequires : pypi(zope.hookable)
 BuildRequires : pypi(zope.interface)
 BuildRequires : python-future
-BuildRequires : zope.interface
 
 %description
 Eventually there will also be a compatibility test here like the Apache one.
@@ -309,7 +303,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1641596153
+export SOURCE_DATE_EPOCH=1641653948
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib

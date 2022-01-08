@@ -1,15 +1,15 @@
 # This file contains additional build requirements that did not get
 # picked up automatically. One name per line, no whitespace.
-ConfigArgParse
+pypi(configargparse)
 pypi(acme)
 augeas
 pypi(boto3)
-cryptography
+pypi(cryptography)
 pypi(josepy)
 ndg_httpsclient
-oauth2client
-pyOpenSSL
-pyRFC3339
+pypi(oauth2client)
+pypi(pyopenssl)
+pypi(pyrfc3339)
 python-future
 pypi(setuptools)
-zope.interface
+pypi(zope.interface)
